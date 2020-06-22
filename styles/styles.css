@@ -1,0 +1,23 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 25px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.comment {
+    font-style: italic;
+    text-align: center;
+}
+
+#makeProfile{
+    border-radius: 50px;
+}
