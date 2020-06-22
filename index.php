@@ -23,10 +23,12 @@ $f3 -> route('GET /', function() {
     echo $view->render('views/home.html');
 });
 
-$f3 -> route('GET /', function() {
+//Define Personal Information route
+$f3 -> route('GET|POST /personalInformation', function($f3) {
     $view = new Template();
     echo $view->render('views/personalInformation.html');
 });
+
 
 //Run fat free
 $f3 -> run();
