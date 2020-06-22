@@ -24,10 +24,27 @@ $f3 -> route('GET /', function() {
 });
 
 //Define Personal Information route
-$f3 -> route('GET|POST /personalInformation', function($f3) {
+$f3 -> route('GET|POST /personalInformation', function() {
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_SESSION['Fname'] = $_POST['Fname'];
+        $_SESSION['Lname'] = $_POST['Lname'];
+        $_SESSION['age'] = $_POST['age'];
+        $_SESSION['gender'] = $_POST['gender'];
+        $_SESSION['phone'] = $_POST['phone'];
+    }
+
     $view = new Template();
     echo $view->render('views/personalInformation.html');
 });
+
+//Define Profile route
+$f3 -> route('GET|POST /profile', function() {
+
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
 
 
 //Run fat free
