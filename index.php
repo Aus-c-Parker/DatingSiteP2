@@ -24,7 +24,7 @@ $f3 -> route('GET /', function() {
 });
 
 //Define Personal Information route
-$f3 -> route('GET|POST /personalInformation', function() {
+$f3 -> route('GET|POST /personalInformation', function($f3) {
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['Fname'] = $_POST['Fname'];
@@ -32,6 +32,8 @@ $f3 -> route('GET|POST /personalInformation', function() {
         $_SESSION['age'] = $_POST['age'];
         $_SESSION['gender'] = $_POST['gender'];
         $_SESSION['phone'] = $_POST['phone'];
+
+        $f3->reroute('profile');
     }
 
     $view = new Template();
@@ -39,7 +41,17 @@ $f3 -> route('GET|POST /personalInformation', function() {
 });
 
 //Define Profile route
-$f3 -> route('GET|POST /profile', function() {
+$f3 -> route('GET|POST /profile', function($f3) {
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['seeking'] = $_POST['seeking'];
+        $_SESSION['bio'] = $_POST['bio'];
+
+
+        $f3->reroute('summery');
+    }
 
     $view = new Template();
     echo $view->render('views/profile.html');
