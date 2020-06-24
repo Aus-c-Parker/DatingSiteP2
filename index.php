@@ -13,6 +13,7 @@ session_start();
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once ('model/data-layer.php');
 
 //Instantiate the F3 Base class
 $f3 = Base::instance();
@@ -50,14 +51,34 @@ $f3 -> route('GET|POST /profile', function($f3) {
         $_SESSION['bio'] = $_POST['bio'];
 
 
-        $f3->reroute('summery');
+        $f3->reroute('interests');
     }
 
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
+$f3 -> route('GET|POST /interests', function($f3) {
+    $indoor = getIndoor();
+    $outdoor = getOutdoor();
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_SESSION['indoor'] = $_POST['indoor'];
+        $_SESSION['outdoor'] = $_POST['outdoor'];
+
+        $f3->reroute('summary');
+    }
+
+    $f3->set('indoor', $indoor);
+    $f3->set('outdoor', $outdoor);
+    $view = new Template();
+    echo $view->render('views/interests.html');
+});
+
+$f3 -> route('GET|POST /summary', function($f3) {
+    $view = new Template();
+    echo $view->render('views/summary.html');
+});
 
 //Run fat free
 $f3 -> run();
