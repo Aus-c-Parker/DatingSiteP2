@@ -28,13 +28,37 @@ $f3 -> route('GET /', function() {
 $f3 -> route('GET|POST /personalInformation', function($f3) {
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_SESSION['Fname'] = $_POST['Fname'];
-        $_SESSION['Lname'] = $_POST['Lname'];
-        $_SESSION['age'] = $_POST['age'];
-        $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phone'] = $_POST['phone'];
 
-        $f3->reroute('profile');
+        if (!validName($_POST['Fname'])) {
+            $f3->set('errors["Fname"]', "Please provide a first name");
+        }
+
+        if (!validName($_POST['Lname'])) {
+            $f3->set('errors["Lname"]', "Please provide a last name");
+        }
+
+        if (!validAge($_POST['age'])) {
+            $f3->set('errors["age"]', "Please provide a valid age");
+        }
+
+        if (!validGender($_POST['gender'])) {
+            $f3->set('errors["Fname"]', "Please select a gender");
+        }
+
+        if (!validPhone($_POST['phone'])) {
+            $f3->set('errors["phone"]', "Please provide a phone number");
+        }
+
+        if (empty($f3->get('errors'))) {
+
+            $_SESSION['Fname'] = $_POST['Fname'];
+            $_SESSION['Lname'] = $_POST['Lname'];
+            $_SESSION['age'] = $_POST['age'];
+            $_SESSION['gender'] = $_POST['gender'];
+            $_SESSION['phone'] = $_POST['phone'];
+
+            $f3->reroute('profile');
+        }
     }
 
     $view = new Template();
@@ -47,13 +71,21 @@ $f3 -> route('GET|POST /profile', function($f3) {
     $state = getState();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['state'] = $_POST['state'];
-        $_SESSION['seeking'] = $_POST['seeking'];
-        $_SESSION['bio'] = $_POST['bio'];
+
+        if (!validEmail($_POST['email'])) {
+            $f3->set('errors["email"]', "Please provide an email");
+        }
 
 
-        $f3->reroute('interests');
+        if (empty($f3->get('errors'))) {
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['state'] = $_POST['state'];
+            $_SESSION['seeking'] = $_POST['seeking'];
+            $_SESSION['bio'] = $_POST['bio'];
+
+
+            $f3->reroute('interests');
+        }
     }
 
     $f3->set('state', $state);
