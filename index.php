@@ -76,6 +76,17 @@ $f3 -> route('GET|POST /profile', function($f3) {
             $f3->set('errors["email"]', "Please provide an email");
         }
 
+        if (!validState($_POST['state'])) {
+            $f3->set('errors["state"]', "Please provide a valid State");
+        }
+
+        if (!validGender($_POST['seeking'])) {
+            $f3->set('errors["seeking"]', "Please select a gender");
+        }
+
+        if (!validName($_POST['bio'])) {
+            $f3->set('errors["bio"]', "Please provide a bio");
+        }
 
         if (empty($f3->get('errors'))) {
             $_SESSION['email'] = $_POST['email'];
@@ -99,9 +110,19 @@ $f3 -> route('GET|POST /interests', function($f3) {
     $outdoor = getOutdoor();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_SESSION['indoor'] = $_POST['indoor'];
-        $_SESSION['outdoor'] = $_POST['outdoor'];
 
+        if (!validIndoor($_POST['indoor'])) {
+            $f3->set('errors["indoor"]', "Please provide an indoor interest");
+        }
+
+        if (!validOutdoor($_POST['outdoor'])) {
+            $f3->set('errors["outdoor"]', "Please provide an indoor interest");
+        }
+
+        if (empty($f3->get('errors'))) {
+            $_SESSION['indoor'] = $_POST['indoor'];
+            $_SESSION['outdoor'] = $_POST['outdoor'];
+        }
         $f3->reroute('summary');
     }
 

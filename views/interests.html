@@ -37,6 +37,9 @@ Home page of dating website defined by F3 view.
                                   name="indoor[]"
                                   value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</label>
                 </repeat>
+                <check if="{{ isset(@errors['indoor']) }}">
+                    {{ @errors['indoor'] }}
+                </check>
             <h2>Out-door interests</h2>
             <repeat group="{{ @outdoor }}" value="{{ @outdoor }}">
                 <label><input type="checkbox"
@@ -44,6 +47,9 @@ Home page of dating website defined by F3 view.
                               name="outdoor[]"
                               value="{{ @outdoor }}"> {{ ucfirst(@outdoor) }}</label>
             </repeat>
+                <check if="{{ isset(@errors['outdoor']) }}">
+                    {{ @errors['outdoor'] }}
+                </check>
         </div>
     </div>
     <div class="row justify-content-end">
