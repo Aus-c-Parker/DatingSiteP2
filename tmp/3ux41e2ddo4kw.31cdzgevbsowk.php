@@ -25,9 +25,9 @@ Home page of dating website defined by F3 view.
 
 <div class="container">
     <div class="row">
-        <h1>Personal Information</h1>
-        <form action>
-        <div class="col"="#" method="post">
+        <div class="col">
+            <h1>Personal Information</h1>
+            <form action="#" method="post">
                 <fieldset class="form-group">
                     <div class="form-group">
                         <label for="email"><b>Email</b></label>
@@ -35,9 +35,9 @@ Home page of dating website defined by F3 view.
                     </div>
                     <div class="form-group">
                         <select id="state" name="state">
-                            <repeat group="{{ @state }}" value="{{ @state }}">
-                                <option value="{{ @state }}"> {{ ucfirst(@state) }} </option>
-                            </repeat>
+                            <?php foreach (($state?:[]) as $state): ?>
+                                <option value="<?= ($state) ?>"> <?= (ucfirst($state)) ?> </option>
+                            <?php endforeach; ?>
                             <!--<option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>

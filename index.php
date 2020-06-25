@@ -44,6 +44,8 @@ $f3 -> route('GET|POST /personalInformation', function($f3) {
 //Define Profile route
 $f3 -> route('GET|POST /profile', function($f3) {
 
+    $state = getState();
+
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['state'] = $_POST['state'];
@@ -53,6 +55,8 @@ $f3 -> route('GET|POST /profile', function($f3) {
 
         $f3->reroute('interests');
     }
+
+    $f3->set('state', $state);
 
     $view = new Template();
     echo $view->render('views/profile.html');

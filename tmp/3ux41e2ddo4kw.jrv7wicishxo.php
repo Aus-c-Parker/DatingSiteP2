@@ -25,32 +25,23 @@ Home page of dating website defined by F3 view.
 
 <div class="container">
     <div class="row">
-        <div class="col">
-            <h2>Interests</h2>
-        <br>
-            <form action="#" method="post">
-                <h2>In-door interests</h2>
+        <div class="col-5" id="summaryBox">
+            <p class="profileInfo">Name: <?= ($SESSION['Fname']) ?> <?= ($SESSION['Lname']) ?></p>
+            <p class="profileInfo">Gender: <?= ($SESSION['gender']) ?></p>
+            <p class="profileInfo">Age: <?= ($SESSION['age']) ?></p>
+            <p class="profileInfo">Phone: <?= ($SESSION['phone']) ?></p>
+            <p class="profileInfo">Email: <?= ($SESSION['email']) ?></p>
+            <p class="profileInfo">State: <?= ($SESSION['state']) ?></p>
+            <p class="profileInfo">Seeking: <?= ($SESSION['seeking']) ?></p>
+            <p class="profileInfo2">Interests: <?= (implode($SESSION['indoor'], ", ")) ?> <?= (implode($SESSION['outdoor'], ", ")) ?></p>
+        </div>
 
-                <repeat group="{{ @indoor }}" value="{{ @indoor }}">
-                    <label><input type="checkbox"
-                                  class="interest"
-                                  name="indoor[]"
-                                  value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</label>
-                </repeat>
-            <h2>Out-door interests</h2>
-            <repeat group="{{ @outdoor }}" value="{{ @outdoor }}">
-                <label><input type="checkbox"
-                              class="interest"
-                              name="outdoor[]"
-                              value="{{ @outdoor }}"> {{ ucfirst(@outdoor) }}</label>
-            </repeat>
+        <div class="col-5" id="bioBox">
+            <img src="images/profile.png" alt="profile">
+            <p>Biography</p>
+            <p><?= ($SESSION['bio']) ?></p>
         </div>
-    </div>
-    <div class="row justify-content-end">
-        <div class="col-2">
-            <button type="submit" class="btn btn-primary">Next></button>
-            </form>
-        </div>
+
     </div>
 </div>
 

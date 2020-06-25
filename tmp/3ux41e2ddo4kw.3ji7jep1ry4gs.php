@@ -31,19 +31,19 @@ Home page of dating website defined by F3 view.
             <form action="#" method="post">
                 <h2>In-door interests</h2>
 
-                <repeat group="{{ @indoor }}" value="{{ @indoor }}">
+                <?php foreach (($indoor?:[]) as $indoor): ?>
                     <label><input type="checkbox"
                                   class="interest"
                                   name="indoor[]"
-                                  value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</label>
-                </repeat>
+                                  value="<?= ($indoor) ?>"> <?= (ucfirst($indoor)) ?></label>
+                <?php endforeach; ?>
             <h2>Out-door interests</h2>
-            <repeat group="{{ @outdoor }}" value="{{ @outdoor }}">
+            <?php foreach (($outdoor?:[]) as $outdoor): ?>
                 <label><input type="checkbox"
                               class="interest"
                               name="outdoor[]"
-                              value="{{ @outdoor }}"> {{ ucfirst(@outdoor) }}</label>
-            </repeat>
+                              value="<?= ($outdoor) ?>"> <?= (ucfirst($outdoor)) ?></label>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="row justify-content-end">
