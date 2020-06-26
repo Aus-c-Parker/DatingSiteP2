@@ -33,21 +33,36 @@ $f3 -> route('GET|POST /personalInformation', function($f3) {
         if (!validName($_POST['Fname'])) {
             $f3->set('errors["Fname"]', "Please provide a first name");
         }
+        else {
+            $f3->set('correct["Fname"]', $_POST['Fname']);
+        }
 
         if (!validName($_POST['Lname'])) {
             $f3->set('errors["Lname"]', "Please provide a last name");
+        }
+        else {
+            $f3->set('correct["Lname"]', $_POST['Lname']);
         }
 
         if (!validAge($_POST['age'])) {
             $f3->set('errors["age"]', "Please provide a valid age");
         }
+        else {
+            $f3->set('correct["age"]', $_POST['age']);
+        }
 
         if (!validGender($_POST['gender'])) {
-            $f3->set('errors["Fname"]', "Please select a gender");
+            $f3->set('errors["gender"]', "Please select a gender");
+        }
+        else {
+            $f3->set('correct["gender"]', $_POST['gender']);
         }
 
         if (!validPhone($_POST['phone'])) {
             $f3->set('errors["phone"]', "Please provide a phone number");
+        }
+        else {
+            $f3->set('correct["phone"]', $_POST['phone']);
         }
 
         if (empty($f3->get('errors'))) {
@@ -76,6 +91,9 @@ $f3 -> route('GET|POST /profile', function($f3) {
         if (!validEmail($_POST['email'])) {
             $f3->set('errors["email"]', "Please provide an email");
         }
+        else {
+            $f3->set('correct["email"]', $_POST['email']);
+        }
 
         if (!validState($_POST['state'])) {
             $f3->set('errors["state"]', "Please provide a valid State");
@@ -84,9 +102,15 @@ $f3 -> route('GET|POST /profile', function($f3) {
         if (!validGender($_POST['seeking'])) {
             $f3->set('errors["seeking"]', "Please select a gender");
         }
+        else {
+            $f3->set('correct["seeking"]', $_POST['seeking']);
+        }
 
         if (!validName($_POST['bio'])) {
             $f3->set('errors["bio"]', "Please provide a bio");
+        }
+        else {
+            $f3->set('correct["bio"]', $_POST['bio']);
         }
 
         if (empty($f3->get('errors'))) {

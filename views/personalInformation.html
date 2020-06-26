@@ -31,21 +31,29 @@ Home page of dating website defined by F3 view.
                 <fieldset class="form-group">
                     <div class="form-group">
                         <label for="Fname"><b>First Name</b></label>
-                        <input type="text" class="form-control" id="Fname" name="Fname">
+                        <input type="text" class="form-control" id="Fname" name="Fname"
+                        <check if="{{ isset(@errors['Fname']) }}">
+                            value = "{{ @errors['Fname'] }}"
+                        </check>>
                         <check if="{{ isset(@errors['Fname']) }}">
                             {{ @errors['Fname'] }}
                         </check>
                     </div>
                     <div class="form-group">
                         <label for="Lname"><b>Last Name</b></label>
-                        <input type="text" class="form-control" id="Lname" name="Lname">
+                        <input type="text" class="form-control" id="Lname" name="Lname"
+                        <check if="{{ isset(@errors['Lname']) }}">
+                            value = "{{ @errors['Lname'] }}"
+                        </check>>
                         <check if="{{ isset(@errors['Lname']) }}">
                             {{ @errors['Lname'] }}
                         </check>
                     </div>
                     <div class="form-group">
                         <label for="age"><b>Age</b></label>
-                        <input type="text" class="form-control" id="age" name="age">
+                        <input type="text" class="form-control" id="age" name="age" <check if="{{ isset(@errors['age']) }}">
+                        value = "{{ @errors['age'] }}"
+                    </check>>
                         <check if="{{ isset(@errors['age']) }}">
                             {{ @errors['age'] }}
                         </check>
