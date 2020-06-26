@@ -31,7 +31,7 @@ Home page of dating website defined by F3 view.
                 <fieldset class="form-group">
                     <div class="form-group">
                         <label for="email"><b>Email</b></label>
-                        <input type="text" class="form-control" id="email" name="email" <check if="{{ isset(@errors['email']) }}">
+                        <input type="text" class="form-control" id="email" name="email" <check if="{{ isset(@correct['email']) }}">
                         value = "{{ @errors['email'] }}"
                     </check>>
                         <check if="{{ isset(@errors['email']) }}">
@@ -64,7 +64,7 @@ Home page of dating website defined by F3 view.
         </div>
         <div class="col" id="bioTextBox">
             <p><b>Bio</b></p>
-            <textarea id="bio" name="bio" rows="4" cols="50" <check if="{{ isset(@errors['bio']) }}">
+            <textarea id="bio" name="bio" rows="4" cols="50" <check if="{{ isset(@correct['bio']) }}">
             value = "{{ @errors['bio'] }}"
         </check>></textarea>
             <check if="{{ isset(@errors['bio']) }}">
