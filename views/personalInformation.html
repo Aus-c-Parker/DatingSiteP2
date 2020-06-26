@@ -36,7 +36,7 @@ Home page of dating website defined by F3 view.
                             value = "{{ @correct['Fname'] }}"
                         </check>>
                         <check if="{{ isset(@errors['Fname']) }}">
-                            {{ @errors['Fname'] }}
+                            {{ @correct['Fname'] }}
                         </check>
                     </div>
                     <div class="form-group">
